@@ -58,7 +58,7 @@ function itensDisponiveis(itens) {
     if (itens[i].disponivel) {
       mensagem += itens[i].codigoItem + "  "  
                + itens[i].descricao + " - R$ " 
-               + (itens[i].valor ? itens[i].valor.toFixed(2).replace('.', ',') : "N/A") + " - " 
+               + itens[i].valor.toFixed(2).replace('.', ',')+ " - " 
                + itens[i].quantidade + "\n";
     }
   }
@@ -160,7 +160,7 @@ while (true) {
       iniciarNovaVenda();
       break;
     case "5":
-      alert("Sair do sistema..");
+      alert("finalizando Sistema...");
       break;
     default:
       alert("Atenção! Opção Inexistente, Por favor tente novamente");
