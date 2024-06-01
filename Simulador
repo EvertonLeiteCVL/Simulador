@@ -4,8 +4,8 @@ var item1 = {
   valor: 2399.00,
   tipo: 'computador',
   nome: 'Computador intel Core i5',
-  disponivel: true,
-  quantidade: 7
+  disponivel: false,
+  quantidade: 0
 };
 
 var item2 = {
@@ -48,17 +48,15 @@ var item5 = {
   quantidade: 8
 };
 
+// Define a lista dos itens no sistema
 var itens = [item1, item2, item3, item4, item5];
-
-// Lista de vendas
-var listaDeLancamentos = [];
 
 // Funcção lista de itens disponiveis 
 function itensDisponiveis(itens) {
-  var mensagem = "Itens Disponíveis: \nCódigo | Item  | Valor | Quantidade\n";
+  var mensagem = "Itens Disponíveis:\n";
   for (var i = 0; i < itens.length; i++) {
     if (itens[i].disponivel) {
-      mensagem += itens[i].codigoItem + " - " 
+      mensagem += itens[i].codigoItem + "  "  
                + itens[i].descricao + " - R$ " 
                + (itens[i].valor ? itens[i].valor.toFixed(2).replace('.', ',') : "N/A") + " - " 
                + itens[i].quantidade + "\n";
@@ -66,8 +64,9 @@ function itensDisponiveis(itens) {
   }
   alert(mensagem); 
 }
+var listaDeLancamentos = [];
 
-// Registrar item de venda 
+   // Registrar item de venda 
 function registrarItemVenda() {
   itensDisponiveis(itens); 
   var itemAdicionado = prompt("Digite o código do produto:");
@@ -79,7 +78,7 @@ function registrarItemVenda() {
         alert("Quantidade insuficiente do item em estoque.");
       } else {
         itens[i].quantidade -= quantidadeItem; 
-        // Update the item quantity in stock
+  // Atualiza a quantidade de intem em estoque
         listaDeLancamentos.push({
           codigo: itens[i].codigoItem,
           nome: itens[i].descricao,
@@ -87,7 +86,7 @@ function registrarItemVenda() {
           quantidade: quantidadeItem
         });
         alert("Item adicionado com sucesso!");
-        return; // Sair da função 
+        return; // sair da funçao
       }
     }
   }
@@ -137,7 +136,7 @@ function imprimeNotaFiscal() {
 
 // Função iniciar uma nova venda
 function iniciarNovaVenda() {
-  // Clear the list of sales for a new sale
+  // Limpar a list devenda para nova venda.
   listaDeLancamentos = [];
   alert("Iniciar uma nova venda");
   registrarItemVenda();
